@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Signin Vecverse</title>
+		<!-- Bootstrap core CSS -->
+		<!--th:href="@{/asserts/css/bootstrap.min.css}"-->
+		<link  href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"  rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<!--th:href="@{/asserts/css/signin.css}"-->
+		<link href="/static/css/signin.css" rel="stylesheet">
+	</head>
+
+	<body class="text-center">
+		<div>
+			<form style="margin:0" class="form-signin"   th:action="@{/user/login}" method="post">
+				<img class="rounded" src="../static/img/vecverse.jpg" alt="" width="160" height="160">
+				<h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+				<!--判断-->
+				<p style="color:red" th:if="${not #strings.isEmpty(msg)}" th:text="${msg}" ></p>
+				<label class="sr-only" th:text="#{login.username}">Username</label>
+				<input type="text" name="username" class="form-control" placeholder="Username"  th:placeholder="#{login.username}" required="" autofocus="">
+				<label class="sr-only" th:text="#{login.password}">Password</label>
+				<input type="password" name="password" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required="">
+				<div class="checkbox mb-3">
+					<label>
+						<input type="checkbox" value="remember-me"/> [[#{login.remember}]]
+					</label>
+				</div>
+				<button class="btn btn-lg btn-primary btn-block" type="submit" >Login</button>
+			</form>
+			<form style="margin:0" class="form-signin" th:action="@{/user/register}" method="post" >
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+				<p class="mt-5 mb-3 text-muted">© 2018-2019</p>
+				<a class="btn btn-sm" th:href="@{/(l='zn_CN')}">中文</a>
+				<a class="btn btn-sm" th:href="@{/(l='en_US')}">English</a>
+			</form>
+		</div>
+	</body>
+</html>
